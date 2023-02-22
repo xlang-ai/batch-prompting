@@ -63,6 +63,7 @@ Specifically, you can config parameters as follows (take [CommonsenseQA](https:/
 ```
 Users can create the `transform` and `extract` classes to customize the prompt generation and answer extraction process. 
 Prompt file can be replaced or specified according to the user's need.
+The default model(engine) is Codex(code-davinci-002). You can change to other models by specifying the `engine` parameter.
 
 ### Run experiments
 To run experiments, you can specify the experiment name and other meta configs in command line under `scripts/` directory.
