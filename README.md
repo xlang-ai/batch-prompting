@@ -1,5 +1,5 @@
 # Batch Prompting
-This is the official implementation of the batch prompting paper: [Efficient Inference with Large Language Model APIs](https://arxiv.org/pdf/2301.08721.pdf).
+This is the official implementation of the batch prompting paper: [Batch Prompting: Efficient Inference with Large Language Model APIs](https://arxiv.org/pdf/2301.08721.pdf).
 Batch prompting is a simple alternative prompting approach that enables the LLM to run inference in batches, instead of one sample at a time.
 In this way, it largely saves costs of LLM API calls both computationally and financially, while achieving good performance.
 
