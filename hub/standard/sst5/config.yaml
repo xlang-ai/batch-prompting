@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.sst5.transform_standard_sst5.StandardSST5Transform"
+  prompt_file_path: "standard/sst5/prompt-12shot.txt"
+  max_tokens: 512

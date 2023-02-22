@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.gsm8k.transform_standard_gsm8k.StandardGSM8KTransform"
+  prompt_file_path: "standard/gsm8k/prompt.txt"
+  max_tokens: 512

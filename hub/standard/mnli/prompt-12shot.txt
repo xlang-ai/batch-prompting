@@ -1,0 +1,49 @@
+Determine whether the hypothesis can be entailed by the premise, True or False or Neutral?
+
+Premise: Conceptually cream skimming has two basic dimensions - product and geography.
+Hypothesis: Product and geography are what make cream skimming work.
+Answer: Neutral
+
+Premise: One of our number will carry out your instructions minutely.
+Hypothesis: A member of my team will execute your orders with immense precision.
+Answer: True
+
+Premise: Analyzing Postal Service accounts for depreciation, fuel, and maintenance for city delivery carriers, we have estimated the average city delivery vehicle cost per route.
+Hypotheis: Driving cost estimates can be averaged with sufficient data.
+Answer: Neutral
+
+Premise: Consider the United States Postal Service.
+Hypothesis: Forget the United States Postal Service.
+Answer: False
+
+Premise: Take a remarkable statistic that Shesol cites but lets pass relatively unexamined.
+Hypothesis: They had data that was very relevant but under used.
+Answer: True
+
+Premise: The man on the ground thinks for a moment and yells back, You must work in management.
+Hypothesis: There was no one on the ground, man or woman.
+Answer: False
+
+Premise: Hello, Ben.
+Hypothesis: I ignored Ben.
+Answer: False
+
+Premise: How can you prove it?
+Hypothesis: Can you tell me how to prove it?
+Answer: True
+
+Premise: In the midst of this amazing amalgam of cultures is a passion for continuity.
+Hypothesis: A passion for continuity is not the most important of these cultures.
+Answer: Neutral
+
+Premise: Poirot, I exclaimed, with relief, and seizing him by both hands, I dragged him into the room.
+Hypothesis: Poirot was now back and I was sorry that he would take over what I now considered my own investigation.
+Answer: False
+
+Premise: There's a uh a couple called um oh i'm going to forgot his name now uh Dirkson.
+Hypothesis: I can't remember their name.
+Answer: True
+
+Premise: It's not that the questions they asked weren't interesting or legitimate (though most did fall under the category of already asked and answered).
+Hypothesis: All of the questions were interesting according to a focus group consulted on the subject.
+Answer: Neutral

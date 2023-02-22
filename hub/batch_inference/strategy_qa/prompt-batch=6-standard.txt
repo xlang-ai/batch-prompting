@@ -1,0 +1,27 @@
+Answer the question(s) in a batch with yes or no.
+
+Q[1]: Do hamsters provide food for any animals?
+Q[2]: Could Brooke Shields succeed at University of Pennsylvania?
+Q[3]: Hydrogen’s atomic number squared exceeds number of Spice Girls?
+Q[4]: Is it common to see frost during some college commencements?
+Q[5]: Could a llama birth twice during War in Vietnam (1945-46)?
+Q[6]: Would a pear sink in water?
+A[1]: yes
+A[2]: yes
+A[3]: no
+A[4]: yes
+A[5]: no
+A[6]: no
+
+Q[1]: Can an Arvanite Greek understand some of the Albanian Declaration of Independence?
+Q[2]: Can Burundi's communicate with citizens of New Brunswick?
+Q[3]: Are quadrupeds represented on Chinese calendar?
+Q[4]: Can actress Dafne Keen win the Eurovision Song Contest finals in 2020?
+Q[5]: Would a student in eleventh grade be unable to run for president of the United States?
+Q[6]: Does the judo rank system reach the triple digits?
+A[1]: yes
+A[2]: yes
+A[3]: yes
+A[4]: no
+A[5]: yes
+A[6]: no

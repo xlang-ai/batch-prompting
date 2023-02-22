@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.mnli.transform_standard_mnli.StandardMNLITransform"
+  prompt_file_path: "standard/mnli/prompt-12shot.txt"
+  max_tokens: 512

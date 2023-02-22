@@ -1,0 +1,7 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.aqua.transform_standard_aqua.StandardAQuATransform"
+  extract: "standard.aqua.extract_standard_aqua.StandardAQuAExtract"
+  prompt_file_path: "standard/aqua/prompt.txt"
+  max_tokens: 512

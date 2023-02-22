@@ -1,0 +1,21 @@
+---
+  dataset:
+    dataset_name: "SetFit/sst5"
+    dataset_split: "test"
+    dataset_subset_name: null
+    dataset_key_map:
+      question: "text"
+      answer: "label"
+  method:
+    method_name: "standard"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "standard.sst5.transform_standard_sst5.StandardSST5Transform"
+      prompt_file_path: "standard/sst5/prompt-12shot.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: code-davinci-002
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

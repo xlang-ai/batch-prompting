@@ -1,0 +1,23 @@
+---
+  dataset:
+    dataset_name: "glue"
+    dataset_split: "validation_matched"
+    dataset_subset_name: "mnli"
+    dataset_key_map:
+      premise: "premise"
+      hypothesis: "hypothesis"
+      answer: "label"
+      id: "idx"
+  method:
+    method_name: "standard"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "standard.mnli.transform_standard_mnli.StandardMNLITransform"
+      prompt_file_path: "standard/mnli/prompt-12shot.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: code-davinci-002
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

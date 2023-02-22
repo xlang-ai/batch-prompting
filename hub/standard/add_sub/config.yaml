@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.add_sub.transform_standard_add_sub.StandardAddSubTransform"
+  prompt_file_path: "standard/add_sub/prompt.txt"
+  max_tokens: 512

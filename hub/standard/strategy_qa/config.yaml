@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.strategy_qa.transform_standard_strategy_qa.StandardStrategyQATransform"
+  prompt_file_path: "standard/strategy_qa/prompt.txt"
+  max_tokens: 256

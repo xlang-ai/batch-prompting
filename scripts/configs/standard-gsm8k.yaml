@@ -1,0 +1,21 @@
+---
+  dataset:
+    dataset_name: "gsm8k"
+    dataset_split: "test"
+    dataset_subset_name: "main"
+    dataset_key_map:
+      question: "question"
+      answer: "answer"
+  method:
+    method_name: "standard"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "standard.gsm8k.transform_standard_gsm8k.StandardGSM8KTransform"
+      prompt_file_path: "standard/gsm8k/prompt.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: code-davinci-002
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

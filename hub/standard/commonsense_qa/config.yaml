@@ -1,0 +1,7 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.commonsense_qa.transform_standard_commonsense_qa.StandardCommonsenseQATransform"
+  extract: "standard.commonsense_qa.extract_standard_commonsense_qa.StandardCommonsenseQAExtract"
+  prompt_file_path: "standard/commonsense_qa/prompt.txt"
+  max_tokens: 256

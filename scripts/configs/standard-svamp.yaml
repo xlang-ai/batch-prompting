@@ -1,0 +1,22 @@
+---
+  dataset:
+    dataset_name: "svamp"
+    dataset_split: "validation"
+    dataset_subset_name: null
+    dataset_key_map:
+      question: "question"
+      answer: "answer"
+      id: "id"
+  method:
+    method_name: "standard"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "standard.svamp.transform_standard_svamp.StandardSVAMPTransform"
+      prompt_file_path: "standard/svamp/prompt.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: code-davinci-002
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.multi_arith.transform_standard_multi_arith.StandardMultiArithTransform"
+  prompt_file_path: "standard/multi_arith/prompt.txt"
+  max_tokens: 512

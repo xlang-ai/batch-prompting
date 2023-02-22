@@ -1,0 +1,7 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.svamp.transform_standard_svamp.StandardSVAMPTransform"
+  extract: "standard.svamp.extract_standard_strategy_qa.StandardSVAMPExtract"
+  prompt_file_path: "standard/svamp/prompt.txt"
+  max_tokens: 256

@@ -1,0 +1,6 @@
+---
+  method_name: "standard"
+  client_name: "openai"
+  transform: "standard.rte.transform_standard_rte.StandardRTETransform"
+  prompt_file_path: "standard/rte/prompt-12shot.txt"
+  max_tokens: 256
