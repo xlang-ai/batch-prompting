@@ -17,16 +17,29 @@ class QABatchExtract(Extract):
 
         """
         batch_answers = []
+        answer_idx = 0
         for answer in raw_response.split("\n"):
-            # Skip answer prefix
+            # Skip answer prefix # TODO: Handle this in a better way
             if answer.startswith("A:"):
                 answer = answer[len("A: "):]
+                if len(batch_answers) + 1 < answer_idx:  # The gap > 1 means skip one answer, so we fill it with <empty>
+                    batch_answers.append("<empty>")
+                answer_idx += 1
             elif answer.startswith("A["):
                 answer = answer[len("A[i]: "):]
+                if len(batch_answers) + 1 < answer_idx:
+                    batch_answers.append("<empty>")
+                answer_idx += 1
             elif answer.startswith("Answer: "):
                 answer = answer[len("Answer: "):]
+                if len(batch_answers) + 1 < answer_idx:
+                    batch_answers.append("<empty>")
+                answer_idx += 1
             elif answer.startswith("Answer["):
                 answer = answer[len("Answer[i]: "):]
+                if len(batch_answers) + 1 < answer_idx:
+                    batch_answers.append("<empty>")
+                answer_idx += 1
 
             if "extraction_regex" in kwargs \
                     and kwargs["extraction_regex"] is not None:
@@ -37,6 +50,11 @@ class QABatchExtract(Extract):
                     answer = "<empty>"
                 else:
                     answer = answer.group(1)
-            batch_answers.append(answer.lower())
+
+            if answer != "<empty>":
+                batch_answers.append(answer.lower())
+
+        if len(batch_answers) < answer_idx:
+            batch_answers.append("<empty>")
 
         return batch_answers

@@ -30,7 +30,8 @@ class MultiChoiceQATransform(Transform):
                 ]
             )
         )
-        transformed += "A: "
+        if not kwargs.get("drop_answer_prefix", False):
+            transformed += "A: "
 
         if y:
             assert isinstance(y, Dict)

@@ -1,0 +1,23 @@
+---
+  dataset:
+    dataset_name: "gsm8k"
+    dataset_split: "test"
+    dataset_subset_name: "main"
+    dataset_key_map:
+      question: "question"
+      answer: "answer"
+  method:
+    method_name: "batch_inference_chat"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "batch_inference_chat.gsm8k.transform_batch_inference_gsm8k.BatchInferenceGSM8KTransform"
+      extract: "batch_inference_chat.gsm8k.extract_batch_inference_gsm8k.BatchInferenceGSM8KExtract"
+      extraction_regex: ".*The answer is (.*).\n?"
+      prompt_file_path: "batch_inference_chat/gsm8k/prompt-batch=2.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: gpt-4
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

@@ -53,6 +53,8 @@ class DatasetLoader(object):
             )
         else:
             # If not, load it from the datasets library
+            print("dataset config")
+            print(dataset_name, dataset_split, dataset_subset_name, kwargs)
             dataset = datasets.load_dataset(
                 path=dataset_name,
                 split=dataset_split,

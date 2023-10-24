@@ -71,3 +71,48 @@ class PromptMethod(abc.ABC):
 
         """
         pass
+
+
+class PromptChatMethod:
+    def __init__(self, **kwargs: Any):
+        """
+        Receives kwargs and prepare a manifest connection for prompt method running.
+        Args:
+            **kwargs:
+        """
+        self.kwargs = kwargs
+
+    @backoff.on_exception(backoff.expo, Exception, max_tries=MAX_TRIES)
+    def run_lm(self, prompt: str, **kwargs: Any) -> Union[str, List[str]]:
+        """
+        Run the language model with the given prompt.
+        Only the acceptable kwargs are passed to the language model.
+        Args:
+            prompt: prompt to run the language model with
+            **kwargs:
+
+        Returns: The response from the language model
+        """
+        # TODO:
+        pass
+
+    @abc.abstractmethod
+    def run(
+        self,
+        x: Union[str, Dict],
+        in_context_examples: List[Dict] = None,
+        prompt_file_path: Optional[str] = None,
+        **kwargs: Any
+    ) -> Union[str, List[str]]:
+        """
+        Run the method with the given x and optional in_context_examples or prompt_file_path.
+        Args:
+            x: The input to the method
+            in_context_examples: In context examples for in-context learning
+            prompt_file_path: Prompt file for prompting the language model
+            **kwargs:
+
+        Returns: The result of this method
+
+        """
+        pass

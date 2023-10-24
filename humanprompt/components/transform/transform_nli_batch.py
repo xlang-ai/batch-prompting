@@ -27,6 +27,7 @@ class NLIBatchTransform(Transform):
         for idx, x_ in enumerate(x, 1):
             transformed += f"Premise[{idx}]: {x_['premise']}\n"
             transformed += f"Hypothesis[{idx}]: {x_['hypothesis']}\n"
-        transformed += "Answer[1]: "
+        if not kwargs.get("drop_answer_prefix", False):
+            transformed += "Answer[1]: "
 
         return transformed

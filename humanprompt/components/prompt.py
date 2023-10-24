@@ -10,15 +10,15 @@ class PromptBuilder:
 
     @staticmethod
     def build_prompt(
-        x: Union[str, Dict],
-        description: str = None,
-        in_context_examples: List[Dict] = None,
-        prompt_file_path: Optional[str] = None,
-        transform: Union[str, Callable] = None,
-        n_shots: int = None,
-        do_trim: bool = False,
-        max_tokens: int = 8001,
-        **kwargs: Any,
+            x: Union[str, Dict],
+            description: str = None,
+            in_context_examples: List[Dict] = None,
+            prompt_file_path: Optional[str] = None,
+            transform: Union[str, Callable] = None,
+            n_shots: int = None,
+            do_trim: bool = False,
+            max_tokens: int = 8001,
+            **kwargs: Any,
     ) -> str:
         """
         Build prompt from x, in_context_examples, and prompt_file_path.
@@ -73,10 +73,10 @@ class PromptBuilder:
 
     @staticmethod
     def build_one_prompt(
-        x: Union[str, Dict],
-        transform: Union[str, Callable],
-        y: Union[str, Dict] = None,
-        **kwargs: Any,
+            x: Union[str, Dict],
+            transform: Union[str, Callable],
+            y: Union[str, Dict] = None,
+            **kwargs: Any,
     ) -> str:
 
         if callable(transform):
@@ -102,10 +102,10 @@ class PromptBuilder:
 
     @staticmethod
     def build_prompt_from_file(
-        prompt_file_path: str,
-        x: Union[str, Dict] = None,
-        transform: Union[str, Callable] = None,
-        **kwargs: Any,
+            prompt_file_path: str,
+            x: Union[str, Dict] = None,
+            transform: Union[str, Callable] = None,
+            **kwargs: Any,
     ) -> str:
         prompt = ""
 
@@ -122,23 +122,23 @@ class PromptBuilder:
 
     @staticmethod
     def build_prompt_from_examples(
-        x: Union[str, Dict],
-        in_context_examples: List[Dict],
-        transform: Union[str, Callable],
-        n_shots: int = None,
-        **kwargs: Any,
+            x: Union[str, Dict],
+            in_context_examples: List[Dict],
+            transform: Union[str, Callable],
+            n_shots: int = None,
+            **kwargs: Any,
     ) -> str:
         in_context_examples_prompt = ""
         n_shots = len(in_context_examples) if n_shots is None else n_shots
         for in_context_example in in_context_examples[:n_shots]:
             in_context_examples_prompt += (
-                PromptBuilder.build_one_prompt(
-                    x=in_context_example["x"],
-                    y=in_context_example["y"],
-                    transform=transform,
-                    **kwargs,
-                )
-                + "\n\n"
+                    PromptBuilder.build_one_prompt(
+                        x=in_context_example["x"],
+                        y=in_context_example["y"],
+                        transform=transform,
+                        **kwargs,
+                    )
+                    + "\n\n"
             )
 
         x_prompt = PromptBuilder.build_one_prompt(x=x, transform=transform, **kwargs)
@@ -173,3 +173,57 @@ class PromptBuilder:
             prompt = "\n\n".join(few_shot_prompt) + "\n\n" + generate_prompt
 
         return prompt
+
+
+class PromptChatBuilder(PromptBuilder):
+    @staticmethod
+    def build_chat_prompt(x: Dict, prompt_file_path: str, transform: Any):
+        """Build chat input messages"""
+        user_query = PromptBuilder.build_one_prompt(x, transform, drop_answer_prefix=True)
+        with open(prompt_file_path, "r") as f:
+            text = f.read().rstrip()
+        messages = PromptChatBuilder.text_to_chat_messages(text)
+        messages.append(
+            {"role": "user", "content": user_query}
+        )
+        return messages
+
+    @staticmethod
+    def text_to_chat_messages(text: str) -> List[Dict]:
+        """Split text into messages"""
+        messages = []
+        blocks = text.split("\n\n")
+        for block_text in blocks:
+            if block_text.startswith("System:"):
+                messages.append({"role": "system", "content": block_text[len("System:"):].strip()})
+                continue
+            block_lines = block_text.split("\n")
+            messages.append({"role": "user", "content": "\n".join(block_lines[:-1]).strip()})
+            messages.append({"role": "assistant", "content": block_lines[-1].strip()})
+        return messages
+
+    @staticmethod
+    def build_chat_batch_prompt(x: Dict, prompt_file_path: str, transform: Any, batch_size: int = None):
+        """Build chat input messages"""
+        user_query = PromptBuilder.build_one_prompt(x, transform, drop_answer_prefix=True)
+        with open(prompt_file_path, "r") as f:
+            text = f.read().rstrip()
+        messages = PromptChatBuilder.text_to_chat_batch_messages(text, batch_size=batch_size)
+        messages.append(
+            {"role": "user", "content": user_query}
+        )
+        return messages
+
+    @staticmethod
+    def text_to_chat_batch_messages(text: str, batch_size: int = None) -> List[Dict]:
+        """Split text into batch messages"""
+        messages = []
+        blocks = text.split("\n\n")
+        for block_text in blocks:
+            if block_text.startswith("System:"):
+                messages.append({"role": "system", "content": block_text[len("System:"):].strip()})
+                continue
+            block_lines = block_text.split("\n")
+            messages.append({"role": "user", "content": "\n".join(block_lines[:-batch_size]).strip()})
+            messages.append({"role": "assistant", "content": "\n".join(block_lines[-batch_size:]).strip()})
+        return messages

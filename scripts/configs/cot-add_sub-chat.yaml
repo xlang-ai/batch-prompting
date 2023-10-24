@@ -1,0 +1,24 @@
+---
+  dataset:
+    dataset_name: "add_sub"
+    dataset_split: "validation"
+    dataset_subset_name: null
+    dataset_key_map:
+      question: "sQuestion"
+      answer: "lSolutions"
+      id: "id"
+  method:
+    method_name: "cot_chat"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "cot_chat.add_sub.transform_cot_add_sub.CoTAddSubTransform"
+      extract: "cot_chat.add_sub.extract_cot_add_sub.CoTAddSubExtract"
+      extraction_regex: ".*The answer is (.*).\n?"
+      prompt_file_path: "cot_chat/add_sub/prompt.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: gpt-4
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

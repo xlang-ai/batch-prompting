@@ -23,7 +23,8 @@ class NLITransform(Transform):
 
         transformed = f"Premise: {x['premise']}\n"
         transformed += f"Hypothesis: {x['hypothesis']}\n"
-        transformed += "Answer: "
+        if not kwargs.get("drop_answer_prefix", False):
+            transformed += "Answer: "
 
         if y:
             assert isinstance(y, Dict)

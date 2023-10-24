@@ -1,0 +1,49 @@
+Determine whether the hypothesis can be entailed by the corresponding premise, True or False?
+
+Premise: No Weapons of Mass Destruction Found in Iraq Yet.
+Hypothesis: Weapons of Mass Destruction Found in Iraq.
+Answer: False
+
+Premise: A place of sorrow, after Pope John Paul II died, became a place of celebration, as Roman Catholic faithful gathered in downtown Chicago to mark the installation of new Pope Benedict XVI.
+Hypothesis: Pope Benedict XVI is the new leader of the Roman Catholic Church.
+Answer: True
+
+Premise: Libya's case against Britain and the US concerns the dispute over their demand for extradition of Libyans charged with blowing up a Pan Am jet over Lockerbie in 1988.
+Hypothesis: One case involved the extradition of Libyan suspects in the Pan Am Lockerbie bombing.
+Answer: True
+
+Premise: Argentina sought help from Britain on its privatization program and encouraged British investment.
+Hypothesis: Argentina sought UK expertise on privatization and agriculture.
+Answer: False
+
+Premise: Startling new research into mobile phones claims they may reduce a man's sperm count by up to 30%.
+Hypothesis: Male fertility may be affected by use of a mobile phones.
+Answer: True
+
+Premise: It rewrites the rules of global trade, established by the General Agreement on Tariffs and Trade, or GATT, in 1947, and modified in multiple rounds of negotiations since then.
+Hypothesis: GATT was formed in 1947.
+Answer: False
+
+Premise: The cost of the consumer of the United States fell in June.
+Hypothesis: U.S. consumer spending dived in June.
+Answer: False
+
+Premise: Israeli Prime Minister Ariel Sharon has said that Mahmoud Abbas is a man that Israel can do business with.
+Hypothesis: Palestinian leader, Mahmoud Abbas, may be someone Israel can talk with.
+Answer: True
+
+Premise: In October, however, amid rising tensions between the government and opposition groups, a car bomb seriously injured an opposition politician and killed his driver, in Beirut.
+Hypothesis: A member of the opposition was injured in a car bomb attack in Beirut.
+Answer: True
+
+Premise: Ruth's 1927 single season record of 60 home runs stood unsurpassed until Roger Maris hit 61 in 1961.
+Hypothesis: Babe Ruth hit 60 home runs in his lifetime.
+Answer: False
+
+Premise: The German technology was employed to build Shanghai's existing maglev line, the first in the world to be used commercially.
+Hypothesis: Maglev is commercially used.
+Answer: True
+
+Premise: Twelve of Jupiter's moons are relatively small and seem to have been more likely captured than to have been formed in orbit around Jupiter.
+Hypothesis: Jupiter has Twelve moons.
+Answer: False

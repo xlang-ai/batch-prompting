@@ -37,6 +37,7 @@ class MultiChoiceBatchTransform(Transform):
                     ]
                 )
             )
-        transformed += "A[1]: "
+        if not kwargs.get("drop_answer_prefix", False):
+            transformed += "A[1]: "
 
         return transformed

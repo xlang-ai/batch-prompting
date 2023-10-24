@@ -26,6 +26,9 @@ class QABatchTransform(Transform):
         transformed = ""
         for idx, x_ in enumerate(x, 1):
             transformed += f"Q[{idx}]: {x_['question']}\n"
-        transformed += "A[1]: "
+        if kwargs.get("drop_answer_prefix", False):
+            pass
+        else:
+            transformed += "A[1]: "
 
         return transformed

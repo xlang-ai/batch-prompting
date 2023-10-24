@@ -1,0 +1,24 @@
+---
+  dataset:
+    dataset_name: "svamp"
+    dataset_split: "validation"
+    dataset_subset_name: null
+    dataset_key_map:
+      question: "question"
+      answer: "answer"
+      id: "id"
+  method:
+    method_name: "cot_chat"
+    method_config_file_path: null
+    method_args:
+      client_name: "openai"
+      transform: "cot_chat.svamp.transform_cot_svamp.CoTSVAMPTransform"
+      extract: "cot_chat.svamp.extract_cot_svamp.CoTSVAMPExtract"
+      extraction_regex: ".*The answer is (.*).\n?"
+      prompt_file_path: "cot_chat/svamp/prompt.txt"
+      max_tokens: 512
+      temperature: 0
+      engine: gpt-4
+      stop_sequence: "\n\n"
+  metrics:
+    - "exact_match"

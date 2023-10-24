@@ -23,9 +23,15 @@ class QATransform(Transform):
         """
         if y is None:
             if isinstance(x, str):
-                return f"Q: {x}\nA: "
+                if kwargs.get("drop_answer_prefix", False):
+                    return f"Q: {x}"
+                else:
+                    return f"Q: {x}\nA: "
             elif isinstance(x, dict):
-                return f"Q: {x['question']}\nA: "
+                if kwargs.get("drop_answer_prefix", False):
+                    return f"Q: {x['question']}"
+                else:
+                    return f"Q: {x['question']}\nA: "
             else:
                 raise ValueError("x is not a str or a dict")
         else:

@@ -70,7 +70,9 @@ class BaseAutoMethod:
                 raise ValueError("prompt_examples_path must be a string or a dict")
 
         method_name = config["method_name"]
+        print(method_name, "--" * 80)
         method_cls = cls._method_mapping.get(method_name, None)
+        print(method_cls)
         if method_cls is None:
             raise ValueError(
                 f"Unrecognized method name: {method_name}. "
