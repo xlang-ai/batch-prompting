@@ -6,6 +6,22 @@ from datasets import Dataset
 import openai
 import time
 import argparse
+import os
+import ssl
+import sys
+from typing import Dict, List, Union
+import json
+from datasets import Dataset
+import openai
+import time
+import argparse
+sys.path.insert(1,r"C:\Users\18325\PycharmProjects\batch-prompting")  # Add the project root to the path
+from hub.cot.commonsense_qa.extract_cot_commonsense_qa import CoTCommonsenseQAExtract
+from humanprompt.evaluators.evaluator import Evaluator
+from humanprompt.methods.auto.method_auto import AutoMethod
+from humanprompt.methods.base_method.method import PromptMethod
+from humanprompt.tasks.dataset_loader import DatasetLoader
+from humanprompt.utils.config_utils import load_config
 
 from humanprompt.evaluators.evaluator import Evaluator
 from humanprompt.methods.auto.method_auto import AutoMethod
@@ -79,7 +95,7 @@ def run_experiment(
                     )
                     print("One inference time: ", time.time() - start_time)
                     break
-                except openai.error.OpenAIError as e:
+                except openai.OpenAIError as e:
                     print(f"Error when getting response: {e}")
                     continue
             # Clean batch prediction

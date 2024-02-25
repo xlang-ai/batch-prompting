@@ -19,7 +19,7 @@
       prompt_file_path: "batch_inference/mnli/prompt-12shot-batch=4-simple_cot.txt"
       max_tokens: 512
       temperature: 0
-      engine: code-davinci-002
+      engine: davinci-002
       stop_sequence: "\n\n"
   metrics:
     - "exact_match"

@@ -56,14 +56,14 @@ Specifically, you can config parameters as follows (take [CommonsenseQA](https:/
       prompt_file_path: "batch_inference/commonsense_qa/prompt-batch=2.txt"  # prompt file path
       max_tokens: 512                           # max generated tokens
       temperature: 0                            # temperature for generated tokens
-      engine: code-davinci-002                  # LLM engine
+      engine: davinci-002                  # LLM engine
       stop_sequence: "\n\n"                     # stop sequence for generation
   metrics:
     - "exact_match"                             # metrics to evaluate the results
 ```
 Users can create the `transform` and `extract` classes to customize the prompt generation and answer extraction process. 
 Prompt file can be replaced or specified according to the user's need.
-The default model(engine) is Codex(code-davinci-002). You can change to other models by specifying the `engine` parameter.
+The default model(engine) is Codex(davinci-002). You can change to other models by specifying the `engine` parameter.
 
 ### Run experiments
 To run experiments, you can specify the experiment name and other meta configs in command line under `scripts/` directory.

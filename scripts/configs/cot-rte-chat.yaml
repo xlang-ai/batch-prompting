@@ -19,7 +19,7 @@
       prompt_file_path: "cot_chat/rte/prompt-12shot.txt"
       max_tokens: 512
       temperature: 0
-      engine: gpt-4
+      engine: davinci-002
       stop_sequence: "\n\n"
   metrics:
     - "exact_match"

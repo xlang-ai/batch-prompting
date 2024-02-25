@@ -35,7 +35,7 @@ class PromptMethod(abc.ABC):
         Returns: The response from the language model
         """
         run_required_params = inspect.getfullargspec(self.manifest.run).args
-        client_request_required_params = self.manifest.client.get_model_inputs()
+        client_request_required_params = self.manifest.client_pool.get_next_client().get_model_inputs()
 
         run_params = {}
 
