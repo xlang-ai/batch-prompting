@@ -15,7 +15,7 @@ from datasets import Dataset
 import openai
 import time
 import argparse
-sys.path.insert(1,r"C:\Users\18325\PycharmProjects\batch-prompting")  # Add the project root to the path
+sys.path.insert(1,r"C:\Users\alexs\PycharmProjects\batch-prompting")  # Add the project root to the path
 from hub.cot.commonsense_qa.extract_cot_commonsense_qa import CoTCommonsenseQAExtract
 from humanprompt.evaluators.evaluator import Evaluator
 from humanprompt.methods.auto.method_auto import AutoMethod
@@ -28,6 +28,11 @@ from humanprompt.methods.auto.method_auto import AutoMethod
 from humanprompt.methods.base_method.method import PromptMethod
 from humanprompt.tasks.dataset_loader import DatasetLoader
 from humanprompt.utils.config_utils import load_config
+
+# ADDITIONAL IMPORT FOR INTER-ARRIVAL TIME
+import random # to simulate randomness
+#########################################
+
 
 
 class OpenAIKeyPool:
@@ -48,6 +53,9 @@ def run_experiment(
     method: PromptMethod,
     evaluator: Evaluator,
 ) -> Dict:
+    # NEW DATA FOR INTER-ARRIVAL
+    arrival_times = [] # List to store arrival timestamps
+
     """
     Run experiment on a dataset using a method.
 
@@ -60,6 +68,17 @@ def run_experiment(
     predictions, gold_answers = [], []
     for idx, data_item in enumerate(dataset):
         data_item['idx'] = idx
+
+        # ADDITIONAL CODE FOR RANDOM INTER-ARRIVAL TIME
+        # Generate a random inter-arrival time (e.g., uniformly distributed between 1 and 5 seconds)
+        random_interarrival = random.uniform(1,5)
+        time.sleep(random_interarrival) # get a random waiting period
+
+        arrival_time = time.time() # Record the arrival timestamp
+        arrival_times.append(arrival_time) # Append the arrival time to our list of arrival times
+
+        ################################################
+
         if data_item.get('id', None) is None:
             data_item['id'] = idx
         if use_cache \
@@ -131,6 +150,13 @@ def run_experiment(
                 print(f"pred answer: {prediction}")
                 print(f"gold answer: {gold_answer}")
             batch_data_items = []
+
+            #################################
+            # Calculate inter-arrival time (skip for the first request)
+            if idx > 0:
+                inter_arrival_time = arrival_times[idx] - arrival_times[idx - 1]
+                print(f"Inter-Arrival Time for request {idx}: {inter_arrival_time} seconds")
+
         print('-' * 80)
         predictions.extend(batch_prediction)
         gold_answers.extend(batch_gold_answer)
