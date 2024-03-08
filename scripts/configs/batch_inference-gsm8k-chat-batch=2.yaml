@@ -17,7 +17,7 @@
       prompt_file_path: "batch_inference_chat/gsm8k/prompt-batch=2.txt"
       max_tokens: 512
       temperature: 0
-      engine: gpt-4
+      engine: davinci-002
       stop_sequence: "\n\n"
   metrics:
     - "exact_match"
