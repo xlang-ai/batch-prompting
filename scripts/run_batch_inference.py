@@ -16,12 +16,7 @@ import openai
 import time
 import argparse
 sys.path.insert(1,r"C:\Users\alexs\PycharmProjects\batch-prompting")  # Add the project root to the path
-from hub.cot.commonsense_qa.extract_cot_commonsense_qa import CoTCommonsenseQAExtract
-from humanprompt.evaluators.evaluator import Evaluator
-from humanprompt.methods.auto.method_auto import AutoMethod
-from humanprompt.methods.base_method.method import PromptMethod
-from humanprompt.tasks.dataset_loader import DatasetLoader
-from humanprompt.utils.config_utils import load_config
+
 
 from humanprompt.evaluators.evaluator import Evaluator
 from humanprompt.methods.auto.method_auto import AutoMethod
@@ -56,6 +51,7 @@ def run_experiment(
     # NEW DATA FOR INTER-ARRIVAL
     arrival_times = [] # List to store arrival timestamps
 
+
     """
     Run experiment on a dataset using a method.
 
@@ -66,16 +62,23 @@ def run_experiment(
     """
     batch_data_items = []
     predictions, gold_answers = [], []
+    wait_time = 0.0
     for idx, data_item in enumerate(dataset):
         data_item['idx'] = idx
 
         # ADDITIONAL CODE FOR RANDOM INTER-ARRIVAL TIME
         # Generate a random inter-arrival time (e.g., uniformly distributed between 1 and 5 seconds)
         random_interarrival = random.uniform(1,5)
+
+        time_before_wait = time.time()
         time.sleep(random_interarrival) # get a random waiting period
+        wait_time +=  time.time() - time_before_wait
+
+
 
         arrival_time = time.time() # Record the arrival timestamp
         arrival_times.append(arrival_time) # Append the arrival time to our list of arrival times
+
 
         ################################################
 
@@ -112,7 +115,9 @@ def run_experiment(
                         x=batch_data_items,
                         verbose=verbose
                     )
-                    print("One inference time: ", time.time() - start_time)
+                    print(f"Inference service time: {time.time() - start_time} seconds")
+                    print(f'Wait Time: {wait_time} seconds')
+                    print(f'Latency: { wait_time + (time.time() - start_time)} seconds')
                     break
                 except openai.OpenAIError as e:
                     print(f"Error when getting response: {e}")
@@ -153,9 +158,11 @@ def run_experiment(
 
             #################################
             # Calculate inter-arrival time (skip for the first request)
+            wait_time = 0.0
             if idx > 0:
                 inter_arrival_time = arrival_times[idx] - arrival_times[idx - 1]
                 print(f"Inter-Arrival Time for request {idx}: {inter_arrival_time} seconds")
+
 
         print('-' * 80)
         predictions.extend(batch_prediction)
